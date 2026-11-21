@@ -1,0 +1,54 @@
+<!doctype html>
+<!--
+  링크 공유 미리보기 그림(img/og.jpg, 1200x630)의 원본. 첫 화면과 같은 글꼴(프리텐다드)·궤도 모양을 쓴다.
+  만드는 법: python -I tools/make_og.py <사이트 폴더>   (미리보기 서버 minsu-profile 이 켜져 있어야 한다)
+  문구를 바꾸면 index.html 의 og:description 과 og:image 의 ?v= 번호도 함께 올린다.
+-->
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  html, body { margin: 0; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden; position: relative; color: #fff;
+    font-family: "Pretendard Variable", Pretendard, sans-serif; letter-spacing: -0.01em;
+    background:
+      radial-gradient(1200px 600px at 85% 20%, rgba(143, 182, 207, .18), transparent 60%),
+      linear-gradient(180deg, #0f2f4d, #0a1f35);
+  }
+  body::before {
+    content: ""; position: absolute; inset: 0; opacity: .5;
+    background-image: radial-gradient(rgba(255, 255, 255, .09) 1px, transparent 1px); background-size: 22px 22px;
+  }
+  svg { position: absolute; inset: 0; }
+  ellipse { fill: none; stroke: rgba(143, 182, 207, .38); stroke-width: 1.4; }
+  .text { position: absolute; left: 84px; top: 0; bottom: 0; width: 600px; display: flex; flex-direction: column; justify-content: center; }
+  .eyebrow { margin: 0; font-size: 19px; letter-spacing: .18em; color: #8fb6cf; font-weight: 600; }
+  h1 { margin: 16px 0 0; font-size: 92px; line-height: 1.05; font-weight: 800; letter-spacing: -0.02em; }
+  h1 span { display: block; margin-top: 10px; font-size: 28px; font-weight: 500; letter-spacing: .04em; color: rgba(255, 255, 255, .6); }
+  .lead { margin: 34px 0 0; font-size: 38px; line-height: 1.45; font-weight: 600; letter-spacing: -0.02em; }
+  .lead em { font-style: normal; color: #f5a524; }
+  .fields { margin: 30px 0 0; font-size: 21px; font-weight: 500; color: rgba(255, 255, 255, .72); }
+  .photo {
+    position: absolute; left: 740px; top: 92px; width: 330px; height: 440px; overflow: hidden; background: #fff;
+    border-radius: 48% 48% 46% 46% / 40% 40% 38% 38%;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, .35), 0 0 0 6px rgba(255, 255, 255, .08);
+  }
+  .photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block; }
+</style>
+</head>
+<body>
+  <svg viewBox="0 0 1200 630" aria-hidden="true">
+    <ellipse cx="905" cy="312" rx="318" ry="116" transform="rotate(-18 905 312)" />
+    <ellipse cx="905" cy="312" rx="250" ry="286" transform="rotate(24 905 312)" />
+  </svg>
+  <div class="text">
+    <p class="eyebrow">URBAN PLANNER · 도시계획 엔지니어</p>
+    <h1>황민수<span>Minsu Hwang</span></h1>
+    <p class="lead">데이터로 오늘의 도시를 읽고,<br><em>더 나은 내일</em>을 계획합니다.</p>
+    <p class="fields">정비계획 · 공공주택 · 도시관리계획 · 지역개발</p>
+  </div>
+  <div class="photo"><img src="../img/profile.jpg" alt=""></div>
+</body>
+</html>
