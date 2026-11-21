@@ -85,18 +85,20 @@
   }
 
   function setZoom(on, cx, cy) {
+    if (on && img.classList.contains('loading')) return;
+    // 맞춤 크기와 누른 자리는 확대 모드로 바꾸기 전에 잰다.
+    // (예전엔 바꾼 뒤에 재서 원본 크기의 2배, 판넬은 화면 맞춤의 10배 가까이 커졌다 — 11-21 민수님 '너무 심하다')
+    var fitW = img.clientWidth, fitH = img.clientHeight, rect = img.getBoundingClientRect();
     cur.zoom = on;
     dlg.classList.toggle('zoomed', on);
     elZoom.setAttribute('aria-pressed', on ? 'true' : 'false');
     elZoom.querySelector('span').textContent = on ? '맞춤' : '확대';
     if (!on) { img.style.width = ''; img.style.height = ''; stage.scrollTo(0, 0); return; }
-    if (img.classList.contains('loading')) { setZoom(false); return; }
     var it = setItems()[cur.i];
-    var fitW = img.clientWidth, fitH = img.clientHeight;
-    var rect = img.getBoundingClientRect();
     var rx = cx == null ? 0.5 : (cx - rect.left) / rect.width;
     var ry = cy == null ? 0.5 : (cy - rect.top) / rect.height;
-    var scale = Math.max(it.w / fitW, 2);
+    // 화면 맞춤의 1.5~2.5배. 원본 해상도를 넘기지 않되, 너무 덜 커지지 않게 1.5배는 보장한다.
+    var scale = Math.max(1.5, Math.min(2.5, it.w / fitW));
     var w = Math.round(fitW * scale), h = Math.round(fitH * scale);
     img.style.width = w + 'px'; img.style.height = h + 'px';
     requestAnimationFrame(function () {
