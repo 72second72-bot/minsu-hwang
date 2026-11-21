@@ -25,7 +25,7 @@ DECKS = {
     'gyeyang': rng((1, 28)),
     'ydp': rng((2, 32)),
     'thesis': rng((1, 42)),
-    'ghm': rng((1, 52)),
+    'ghm': rng((1, 49)),  # 50~52 는 중간발표 때 비워 둔 자리(통계 검증·결론)라 뺀다
     'smoke': rng((1, 22)),
 }
 TITLES = {

@@ -90,6 +90,7 @@
     elZoom.setAttribute('aria-pressed', on ? 'true' : 'false');
     elZoom.querySelector('span').textContent = on ? '맞춤' : '확대';
     if (!on) { img.style.width = ''; img.style.height = ''; stage.scrollTo(0, 0); return; }
+    if (img.classList.contains('loading')) { setZoom(false); return; }
     var it = setItems()[cur.i];
     var fitW = img.clientWidth, fitH = img.clientHeight;
     var rect = img.getBoundingClientRect();
@@ -107,7 +108,8 @@
   function show() {
     var its = setItems(), it = its[cur.i];
     if (cur.zoom) setZoom(false);
-    img.src = it.src; img.alt = W[cur.work].title + ' ' + (cur.i + 1) + '쪽';
+    if (img.getAttribute('src') !== it.src) { img.classList.add('loading'); img.src = it.src; }
+    img.alt = W[cur.work].title + ' ' + (cur.i + 1) + '쪽';
     elCount.textContent = (cur.i + 1) + ' / ' + its.length;
     cap.textContent = it.cap || '';
     cap.hidden = !it.cap;
@@ -137,7 +139,10 @@
   }
 
   function close() { setZoom(false); dlg.close(); }
-  dlg.addEventListener('close', function () { document.body.classList.remove('noscroll'); img.removeAttribute('src'); });
+  // 닫힘 알림은 한 박자 늦게 오므로, 그새 다시 열렸으면 그림을 지우지 않는다
+  dlg.addEventListener('close', function () { if (dlg.open) return; document.body.classList.remove('noscroll'); img.removeAttribute('src'); });
+  img.addEventListener('load', function () { img.classList.remove('loading'); });
+  img.addEventListener('error', function () { img.classList.remove('loading'); });
 
   document.querySelectorAll('[data-open]').forEach(function (b) {
     b.addEventListener('click', function () { open(b.dataset.open); });
