@@ -125,7 +125,8 @@ for k in ('goyang', 'gyeyang'):
 def slide(key, n): return Image.open(os.path.join(SL, key, f'{n:03d}.png')).convert('RGB')
 thumbs = {
     'goyang': fit169(p7.crop((2000, 620, 5000, 2330))),
-    'gyeyang': fit169(p10.crop((2770, 1025, 4825, 4500)).rotate(-90, expand=True)),
+    # 오른쪽 검은 테두리·반쯤 잘린 방위표가 보여 '우측이 잘린 느낌'(11-23 민수님) → 마스터플랜 안쪽만, 양옆 원형 그림 여백을 맞춰 자름
+    'gyeyang': fit169(p10.crop((2860, 1065, 4790, 4496)).rotate(-90, expand=True)),
     'ydp': fit169(frac(slide('ydp', 13), (0, 0.09, 1, 1))),
     'thesis': fit169(frac(slide('thesis', 32), (0.02, 0.09, 0.98, 0.98)), top=0.45),
     'ghm': fit169(frac(slide('ghm', 24), (0, 0.16, 1, 0.96))),
