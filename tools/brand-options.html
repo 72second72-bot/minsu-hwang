@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- 머리 막대 왼쪽 로고 시안 비교용 (배포 안 됨). 방위표를 다듬은 세 가지 -->
+<!-- 머리 막대 왼쪽 로고 시안 비교용 (배포 안 됨). 도형 세 가지 (방위표 시안은 어색하다고 하셔서 11-27 교체) -->
 <html lang="ko">
 <head>
 <meta charset="utf-8">
@@ -30,29 +30,23 @@
 <body>
 <svg width="0" height="0" style="position:absolute">
   <defs>
-    <!-- 1. 지도식 방위표: N 글자 + 반쪽만 채운 화살 -->
+    <!-- 1. 궤도: 첫 화면의 엇갈린 타원 두 개 + 가운데 주황 점 -->
     <symbol id="l1" viewBox="0 0 32 32">
-      <polyline points="12.6,8.4 12.6,1.8 19.4,8.4 19.4,1.8" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="miter" stroke-linecap="square"/>
-      <path d="M16 11 L8.6 30 L16 25.6 Z" fill="#f5a524"/>
-      <path d="M16 11 L23.4 30 L16 25.6 Z" fill="none" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/>
+      <ellipse cx="16" cy="16" rx="14" ry="5.2" transform="rotate(-18 16 16)" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="1.5"/>
+      <ellipse cx="16" cy="16" rx="10.4" ry="13.2" transform="rotate(24 16 16)" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="1.5"/>
+      <circle cx="16" cy="16" r="3.6" fill="#f5a524"/>
     </symbol>
-    <!-- 2. 나침반: 고리 + 네 방향 눈금 + 깎은 면 바늘 -->
+    <!-- 2. 고리 + 점: 고리 하나에 주황 점이 걸린 모양 -->
     <symbol id="l2" viewBox="0 0 32 32">
-      <circle cx="16" cy="16" r="13.2" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.4"/>
-      <path d="M16 1.6 L17.6 4.6 L14.4 4.6 Z" fill="#f5a524"/>
-      <path d="M29.4 16 H27 M16 30.4 V28 M2.6 16 H5" stroke="rgba(255,255,255,.6)" stroke-width="1.4" stroke-linecap="round"/>
-      <path d="M16 6 L11.6 16 L16 16 Z" fill="#ffc24d"/>
-      <path d="M16 6 L20.4 16 L16 16 Z" fill="#d98a0b"/>
-      <path d="M16 26 L11.6 16 L16 16 Z" fill="rgba(255,255,255,.9)"/>
-      <path d="M16 26 L20.4 16 L16 16 Z" fill="rgba(255,255,255,.45)"/>
-      <circle cx="16" cy="16" r="1.3" fill="#0a1f35"/>
+      <circle cx="16" cy="16" r="11.5" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2"/>
+      <circle cx="24.1" cy="7.9" r="4" fill="#f5a524" stroke="#0a1f35" stroke-width="2"/>
     </symbol>
-    <!-- 3. 고리 위 N + 반쪽 화살 -->
+    <!-- 3. 도시 블록: 길로 나뉜 네 칸, 한 칸만 주황 -->
     <symbol id="l3" viewBox="0 0 32 32">
-      <path d="M20.6 7.1 A12 12 0 1 1 11.4 7.1" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.5" stroke-linecap="round"/>
-      <polyline points="13.7,7.6 13.7,1.8 18.3,7.6 18.3,1.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="miter" stroke-linecap="square"/>
-      <path d="M16 10 L11 26.5 L16 23 Z" fill="#f5a524"/>
-      <path d="M16 10 L21 26.5 L16 23 Z" fill="none" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/>
+      <rect x="4" y="4" width="10.5" height="10.5" rx="2.2" fill="rgba(255,255,255,.88)"/>
+      <rect x="17.5" y="4" width="10.5" height="10.5" rx="2.2" fill="#f5a524"/>
+      <rect x="4" y="17.5" width="10.5" height="10.5" rx="2.2" fill="rgba(255,255,255,.88)"/>
+      <rect x="17.5" y="17.5" width="10.5" height="10.5" rx="2.2" fill="none" stroke="rgba(255,255,255,.88)" stroke-width="1.6"/>
     </symbol>
   </defs>
 </svg>
@@ -62,9 +56,9 @@
   <div class="moon"><svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></div>
 </template>
 
-<div class="row" data-l="l1"><div class="head"><p class="lab">1. 지도식 방위표<small>도면에 흔히 쓰는 N + 반쪽만 채운 화살. 가장 단정함</small></p></div></div>
-<div class="row" data-l="l2"><div class="head"><p class="lab">2. 나침반<small>고리 · 네 방향 눈금 · 깎은 면 바늘(입체감). 가장 화려함</small></p></div></div>
-<div class="row" data-l="l3"><div class="head"><p class="lab">3. 고리 + N<small>고리 맨 위를 틔워 N 을 얹고 반쪽 화살. 1과 2의 중간</small></p></div></div>
+<div class="row" data-l="l1"><div class="head"><p class="lab">1. 궤도<small>첫 화면 사진 뒤의 엇갈린 타원 두 개를 줄인 모양. 홈페이지와 한 벌</small></p></div></div>
+<div class="row" data-l="l2"><div class="head"><p class="lab">2. 고리 + 점<small>고리 하나에 주황 점. 가장 단순함</small></p></div></div>
+<div class="row" data-l="l3"><div class="head"><p class="lab">3. 도시 블록<small>길로 나뉜 네 칸 중 한 칸만 주황. 도시계획 느낌</small></p></div></div>
 
 <script>
   var t = document.getElementById('nav');

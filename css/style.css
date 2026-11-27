@@ -60,7 +60,7 @@ p { margin: 0; }
 }
 .topbar-in { display: flex; align-items: center; gap: 16px; height: 60px; }
 .brand { flex: none; display: flex; align-items: center; color: #fff; text-decoration: none; }
-.brand svg { width: 32px; height: 32px; display: block; } /* 나침반 방위표 로고 (11-27 민수님 고름). 탭 아이콘 img/favicon.svg 도 같은 모양 */
+.brand svg { width: 32px; height: 32px; display: block; } /* 고리 + 주황 점 로고 (11-27 민수님 고름 — 육각형·이름·나침반은 어색). 탭 아이콘 img/favicon.svg 도 같은 모양 */
 .nav { display: flex; gap: 4px; margin-left: auto; overflow-x: auto; scrollbar-width: none; }
 .nav::-webkit-scrollbar { display: none; }
 .nav a {
